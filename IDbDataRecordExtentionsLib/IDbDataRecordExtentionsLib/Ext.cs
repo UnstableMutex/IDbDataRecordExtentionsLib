@@ -10,6 +10,19 @@ namespace IDbDataRecordExtentionsLib
 {
     public static class Ext
     {
+                public static DateTime? GetDateTimeN(this IDataRecord reader, string fieldName)
+        {
+            var ind = reader.GetOrdinal(fieldName);
+            if (reader.IsDBNull(ind))
+            {
+                return null;
+            }
+            else
+            {
+                return reader.GetDateTime(ind);
+            }
+            
+        }
         public static string GetString(this IDataRecord r, string fieldName, string def)
         {
             var ind = r.GetOrdinal(fieldName);
