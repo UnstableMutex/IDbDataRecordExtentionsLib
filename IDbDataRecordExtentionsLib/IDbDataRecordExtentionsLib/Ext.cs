@@ -23,6 +23,22 @@ namespace IDbDataRecordExtentionsLib
             }
             
         }
+                public static double GetDouble(this IDataRecord r, string fieldName)
+        {
+            return r.GetDouble(r.GetOrdinal(fieldName));
+        }
+        public static double GetDouble(this IDataRecord r, string fieldName, double def)
+        {
+            var ind = r.GetOrdinal(fieldName);
+            if (r.IsDBNull(ind))
+            {
+                return def;
+            }
+            else
+            {
+                return r.GetDouble(ind);
+            }
+        }
         public static string GetString(this IDataRecord r, string fieldName, string def)
         {
             var ind = r.GetOrdinal(fieldName);
