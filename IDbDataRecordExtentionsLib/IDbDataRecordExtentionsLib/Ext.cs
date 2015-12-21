@@ -65,6 +65,19 @@ namespace IDbDataRecordExtentionsLib
             return reader.GetDateTime(reader.GetOrdinal(fieldName));
         }
 
+        public static DateTime? GetDateTimeN(this IDataRecord reader, string fieldName)
+        {
+            var ind = reader.GetOrdinal(fieldName);
+            if (reader.IsDBNull(ind))
+            {
+                return null;
+            }
+            else
+            {
+                return reader.GetDateTime(ind);
+            }
+
+        }
         public static decimal GetDecimal(this IDataRecord r, string fieldName, decimal def)
         {
             var ind = r.GetOrdinal(fieldName);
@@ -83,6 +96,22 @@ namespace IDbDataRecordExtentionsLib
             return r.GetDecimal(r.GetOrdinal(fieldName));
         }
 
+        public static double GetDouble(this IDataRecord r, string fieldName)
+        {
+            return r.GetDouble(r.GetOrdinal(fieldName));
+        }
+        public static double GetDouble(this IDataRecord r, string fieldName, double def)
+        {
+            var ind = r.GetOrdinal(fieldName);
+            if (r.IsDBNull(ind))
+            {
+                return def;
+            }
+            else
+            {
+                return r.GetDouble(ind);
+            }
+        }
         public static Guid GetGuid(this IDataRecord r, string fieldName, Guid def)
         {
             var ind = r.GetOrdinal(fieldName);
