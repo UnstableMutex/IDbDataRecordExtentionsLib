@@ -142,6 +142,17 @@ namespace IDbDataRecordExtentionsLib
                 return r.GetInt16(ind);
             }
         }
+        public static short? GetInt16N(IDataRecord r, string fieldName)
+        {
+            var o = r.GetOrdinal(fieldName);
+            bool b = r.IsDBNull(o);
+            short? res = null;
+            if (!b)
+            {
+               res= r.GetInt16(o);
+            }
+            return res;
+        }
 
         public static short GetInt16(this IDataRecord r, string fieldName)
         {
