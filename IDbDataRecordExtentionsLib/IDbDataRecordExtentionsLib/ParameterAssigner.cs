@@ -24,7 +24,7 @@ static class ParametersAssigner
                
                var pn = p.ParameterName.Replace("@", string.Empty).Replace("_", string.Empty).ToLower();
                var prop = pr.SingleOrDefault(x => string.Equals(x.Name, pn, StringComparison.CurrentCultureIgnoreCase));
-               object val = prop.GetValue(obj);
+               object val = prop.GetValue(obj,null);
                var isnull = IsNullable(val);
                if (isnull & val == null)
                {
