@@ -22,7 +22,16 @@ namespace IDbDataRecordExtentionsLib
                 return r.GetBoolean(ind);
             }
         }
-
+        public static bool? GetBooleanN(this IDataRecord r, string fieldName)
+        {
+            var ind = r.GetOrdinal(fieldName);
+            bool? res = null;
+            if (!r.IsDBNull(ind))
+            {
+                res= r.GetBoolean(ind);
+            }
+            return res;
+        }
         public static bool GetBoolean(this IDataRecord r, string fieldName)
         {
             return r.GetBoolean(r.GetOrdinal(fieldName));
@@ -95,14 +104,14 @@ namespace IDbDataRecordExtentionsLib
         {
             return r.GetDecimal(r.GetOrdinal(fieldName));
         }
-                public static decimal? GetDecimalN(this IDataRecord r, string fieldName)
+        public static decimal? GetDecimalN(this IDataRecord r, string fieldName)
         {
             var o = r.GetOrdinal(fieldName);
             bool b = r.IsDBNull(o);
             decimal? res = null;
             if (!b)
             {
-               res= r.GetDecimal(o);
+                res = r.GetDecimal(o);
             }
             return res;
         }
@@ -160,7 +169,7 @@ namespace IDbDataRecordExtentionsLib
             short? res = null;
             if (!b)
             {
-               res= r.GetInt16(o);
+                res = r.GetInt16(o);
             }
             return res;
         }
@@ -169,13 +178,13 @@ namespace IDbDataRecordExtentionsLib
         {
             return r.GetInt16(r.GetOrdinal(fieldName));
         }
-  public static int? GetInt32N(this IDataRecord r, string fieldName)
+        public static int? GetInt32N(this IDataRecord r, string fieldName)
         {
             var ind = r.GetOrdinal(fieldName);
-            int? res=null;
+            int? res = null;
             if (!r.IsDBNull(ind))
             {
-                res= r.GetInt32(ind);
+                res = r.GetInt32(ind);
             }
             return res;
         }
