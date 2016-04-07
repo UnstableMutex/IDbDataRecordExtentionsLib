@@ -169,7 +169,16 @@ namespace IDbDataRecordExtentionsLib
         {
             return r.GetInt16(r.GetOrdinal(fieldName));
         }
-
+  public static int? GetInt32N(this IDataRecord r, string fieldName)
+        {
+            var ind = r.GetOrdinal(fieldName);
+            int? res=null;
+            if (!r.IsDBNull(ind))
+            {
+                res= r.GetInt32(ind);
+            }
+            return res;
+        }
         public static int GetInt32(this IDataRecord r, string fieldName, int def)
         {
             var ind = r.GetOrdinal(fieldName);
