@@ -95,6 +95,17 @@ namespace IDbDataRecordExtentionsLib
         {
             return r.GetDecimal(r.GetOrdinal(fieldName));
         }
+                public static decimal? GetDecimalN(this IDataRecord r, string fieldName)
+        {
+            var o = r.GetOrdinal(fieldName);
+            bool b = r.IsDBNull(o);
+            decimal? res = null;
+            if (!b)
+            {
+               res= r.GetDecimal(o);
+            }
+            return res;
+        }
 
         public static double GetDouble(this IDataRecord r, string fieldName)
         {
@@ -142,7 +153,7 @@ namespace IDbDataRecordExtentionsLib
                 return r.GetInt16(ind);
             }
         }
-        public static short? GetInt16N(IDataRecord r, string fieldName)
+        public static short? GetInt16N(this IDataRecord r, string fieldName)
         {
             var o = r.GetOrdinal(fieldName);
             bool b = r.IsDBNull(o);
