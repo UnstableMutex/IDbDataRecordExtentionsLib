@@ -10,6 +10,32 @@ namespace IDbDataRecordExtentionsLib
 {
     public static class Ext
     {
+        
+        public static string GetStringD(this IDataRecord r, string fieldName)
+        {
+            var ind = r.GetOrdinal(fieldName);
+            if (r.IsDBNull(ind))
+            {
+                return default(string);
+            }
+            else
+            {
+                return r.GetString(ind);
+            }
+        }
+
+        public static int GetInt32D(this IDataRecord r, string fieldName)
+        {
+            var ind = r.GetOrdinal(fieldName);
+            if (r.IsDBNull(ind))
+            {
+                return default(int);
+            }
+            else
+            {
+                return r.GetInt32(ind);
+            }
+        }
         public static bool GetBoolean(this IDataRecord r, string fieldName, bool def)
         {
             var ind = r.GetOrdinal(fieldName);
