@@ -10,7 +10,12 @@ namespace IDbDataRecordExtentionsLib
 {
     public static class Ext
     {
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="r">IDbDataRecord</param>
+        /// <param name="fieldName">field name</param>
+        /// <returns>field string value or null if isdbnull</returns>
         public static string GetStringD(this IDataRecord r, string fieldName)
         {
             var ind = r.GetOrdinal(fieldName);
@@ -23,7 +28,12 @@ namespace IDbDataRecordExtentionsLib
                 return r.GetString(ind);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="r">reader</param>
+        /// <param name="fieldName"></param>
+        /// <returns>field value or 0 if isdbnull</returns>
         public static int GetInt32D(this IDataRecord r, string fieldName)
         {
             var ind = r.GetOrdinal(fieldName);
@@ -36,6 +46,13 @@ namespace IDbDataRecordExtentionsLib
                 return r.GetInt32(ind);
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="r">reader</param>
+        /// <param name="fieldName"></param>
+        /// <param name="def">default value</param>
+        /// <returns>field value or def param value if dbnull</returns>
         public static bool GetBoolean(this IDataRecord r, string fieldName, bool def)
         {
             var ind = r.GetOrdinal(fieldName);
@@ -48,6 +65,12 @@ namespace IDbDataRecordExtentionsLib
                 return r.GetBoolean(ind);
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="r">reader</param>
+        /// <param name="fieldName"></param>
+        /// <returns>value or null if dbnull</returns>
         public static bool? GetBooleanN(this IDataRecord r, string fieldName)
         {
             var ind = r.GetOrdinal(fieldName);
